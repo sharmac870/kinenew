@@ -20,6 +20,47 @@ setInterval(() => {
   activateStep(autoIndex);
 }, 3500);
 
+// ── Demo modal ──────────────────────────────────────────────────────────────
+const DEMO_URLS = {
+  sentinel: 'http://localhost:3000/demo',
+  scan:     'http://localhost:5173/'
+};
+
+const modal     = document.getElementById('demo-modal');
+const demoFrame = document.getElementById('demo-frame');
+const demoClose = document.getElementById('demo-close');
+let lastFocused = null;
+
+function openDemo(key) {
+  lastFocused = document.activeElement;
+  demoFrame.src = DEMO_URLS[key];
+  modal.hidden = false;
+  // Allow display:flex to apply before animating opacity
+  requestAnimationFrame(() => { modal.style.opacity = '1'; });
+  demoClose.focus();
+}
+
+function closeDemo() {
+  modal.style.opacity = '0';
+  setTimeout(() => {
+    modal.hidden = true;
+    demoFrame.src = ''; // stop the demo (pauses timers / autoplay)
+  }, 220);
+  lastFocused?.focus();
+}
+
+document.querySelectorAll('.demo-trigger').forEach(btn =>
+  btn.addEventListener('click', () => openDemo(btn.dataset.demo))
+);
+demoClose.addEventListener('click', closeDemo);
+// Click outside the inner box closes the modal
+modal.addEventListener('click', e => { if (e.target === modal) closeDemo(); });
+// Escape key closes the modal
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !modal.hidden) closeDemo();
+});
+// ────────────────────────────────────────────────────────────────────────────
+
 const hoursInput = document.querySelector('#hours');
 const gainInput = document.querySelector('#gain');
 const result = document.querySelector('#roi-result');

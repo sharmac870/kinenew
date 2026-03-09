@@ -70,6 +70,9 @@
             <div class="tile-tags">
               <span>SOC 2</span><span>NIST</span><span>ISO 27001</span><span>HIPAA</span>
             </div>
+            <button class="demo-trigger" data-demo="sentinel" aria-label="Watch Kinetriq Sentinel demo">
+              ▶ Watch Demo
+            </button>
           </article>
           <article class="product-tile verify">
             <p class="tile-kicker">Kinetriq Verify</p>
@@ -99,6 +102,9 @@
             <div class="tile-tags">
               <span>OWASP AI Top 10</span><span>MCP Security</span><span>Continuous Monitoring</span>
             </div>
+            <button class="demo-trigger" data-demo="scan" aria-label="Watch Kinetriq Scan demo">
+              ▶ Watch Demo
+            </button>
           </article>
         </div>
       </section>
@@ -186,6 +192,13 @@
     </main>
 
     <a class="sticky-cta" href="#contact">Book Demo</a>
+
+    <div class="demo-modal" id="demo-modal" role="dialog" aria-modal="true" aria-label="Product demo" hidden>
+      <div class="demo-modal-inner">
+        <button class="demo-close" id="demo-close" aria-label="Close demo">✕</button>
+        <iframe id="demo-frame" src="" allowfullscreen allow="autoplay"></iframe>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
