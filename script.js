@@ -22,8 +22,8 @@ setInterval(() => {
 
 // ── Demo modal ──────────────────────────────────────────────────────────────
 const DEMO_URLS = {
-  sentinel: 'http://localhost:3000/demo',
-  scan:     'http://localhost:5173/'
+  sentinel: './demos/sentinel/index.html',
+  scan:     './demos/scan/index.html'
 };
 
 const modal     = document.getElementById('demo-modal');
